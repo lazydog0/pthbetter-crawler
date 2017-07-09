@@ -316,7 +316,7 @@ def transcode_release(flac_dir, output_dir, output_format, max_threads=None):
             pool.join()
 
         # copy other files
-        allowed_extensions = ['.cue', '.gif', '.jpeg', '.jpg', '.log', '.md5', '.nfo', '.pdf', '.png', '.sfv', '.txt']
+        allowed_extensions = ['.cue', .log']
         allowed_files = locate(flac_dir, ext_matcher(*allowed_extensions))
         for filename in allowed_files:
             new_dir = os.path.dirname(filename).replace(flac_dir, transcode_dir)
