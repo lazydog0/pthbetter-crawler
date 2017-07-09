@@ -180,8 +180,15 @@ def main():
                 print "Error: can't edit 24-bit torrent - skipping: %s" % e
                 continue
 
-        if transcode.is_multichannel(flac_dir):
-            print "This is a multichannel release, which is unsupported - skipping"
+        try:
+            if transcode.is_multichannel(flac_dir):
+                print "This is a multichannel release, which is unsupported - skipping"
+                continue
+        except Exception as e:
+            print "Error: %s" % e
+            print "skipping"
+            seen.add(str(torrentid))
+            pickle.dump(seen, open(args.cache, 'wb'))
             continue
 
         needed = formats_needed(group, torrent, supported_formats)
