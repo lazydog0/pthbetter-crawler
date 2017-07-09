@@ -114,17 +114,6 @@ class WhatAPI:
         except ValueError:
             raise RequestException
 
-    def request_html(self, action, **kwargs):
-        while time.time() - self.last_request < self.rate_limit:
-            time.sleep(0.1)
-
-        ajaxpage = 'https://redacted.ch/' + action
-        if self.authkey:
-            kwargs['auth'] = self.authkey
-        r = self.session.get(ajaxpage, params=kwargs, allow_redirects=False)
-        self.last_request = time.time()
-        return r.content
-    
     def get_artist(self, id=None, format='MP3', best_seeded=True):
         res = self.request('artist', id=id)
         torrentgroups = res['torrentgroup']
