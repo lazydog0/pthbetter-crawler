@@ -1,20 +1,19 @@
 Introduction
 ------------
 
-whatbetter is a script which automatically transcodes and uploads these
-files to What.CD.
+redbetter is a script which automatically transcodes and uploads these files to
+Redacted.
 
 The following command will scan through every FLAC you have ever
-downloaded (if it is in , determine which formats are needed, transcode the FLAC to
-each needed format, and upload each format to What.CD -- automatically.
+downloaded (if it is in , determine which formats are needed, transcode the
+FLAC to each needed format, and upload each format to What.CD -- automatically.
 
-    $ whatbetter
+    $ redbetter
 
 Installation
 ------------
 
-You're going to need to install a few dependencies before using
-whatbetter.
+You're going to need to install a few dependencies before using redbetter.
 
 First and foremost, you will need Python 2.7 or newer.
 
@@ -51,19 +50,19 @@ you could contact your provider to have these packages installed.
 
 At this point you may execute the following command:
 
-    $ whatbetter
+    $ redbetter
 
 And you will receive a notification stating that you should edit the
-configuration file \~/.whatbetter/config (if you're lucky).
+configuration file \~/.redbetter/config (if you're lucky).
 
 Configuration
 -------------
 
 You've made it far! Congratulations. Open up the file
-\~/.whatbetter/config in a text editor. You're going to see something
+\~/.redbetter/config in a text editor. You're going to see something
 like this:
 
-    [whatcd]
+    [redacted]
     username =
     password = 
     data_dir =
@@ -92,7 +91,7 @@ a prompt will appear. The default is '0' which ignores these occurrences.
 
 You should end up with something like this:
 
-    [whatcd]
+    [redacted]
     username = RequestBunny
     password = clapton
     data_dir = /srv/downloads
@@ -102,13 +101,13 @@ You should end up with something like this:
     media = cd, vinyl, web
     24bit_behaviour = 0
 
-Alright! Now you're ready to use whatbetter.
+Alright! Now you're ready to use redbetter.
 
 Usage
 -----
 
-    usage: whatbetter [-h] [-s] [--config CONFIG] [--cache CACHE]
-                      [release_urls [release_urls ...]]
+    usage: redbetter [-h] [-s] [--config CONFIG] [--cache CACHE]
+                     [release_urls [release_urls ...]]
 
     positional arguments:
       release_urls     the URL where the release is located
@@ -118,8 +117,8 @@ Usage
       -s, --single     only add one format per release (useful for getting unique
                        groups)
       --config CONFIG  the location of the configuration file (default:
-                       ~/.whatbetter/config)
-      --cache CACHE    the location of the cache (default: ~/.whatbetter/cache)
+                       ~/.redbetter/config)
+      --cache CACHE    the location of the cache (default: ~/.redbetter/cache)
 
 Examples
 --------
@@ -127,18 +126,18 @@ Examples
 To transcode and upload every snatch you've ever downloaded (this may
 take a while):
 
-    $ whatbetter
+    $ redbetter
 
 To transcode and upload a specific release (provided you have already
 downloaded the FLAC and it is located in your `data_dir`):
 
-    $ whatbetter http://what.cd/torrents.php?id=1000\&torrentid=1000000
+    $ redbetter http://redacted.ch/torrents.php?id=1000\&torrentid=1000000
 
-Note that if you specify a particular release(s), whatbetter will
+Note that if you specify a particular release(s), redbetter will
 ignore your configuration's media types and attempt to transcode the
 releases you have specified regardless of their media type (so long as
 they are lossless types).
 
-Your first time running whatbetter might take a while, but after it has
+Your first time running redbetter might take a while, but after it has
 successfully gone through and checked everything, it'll go faster any
 consecutive runs due to it's caching method.

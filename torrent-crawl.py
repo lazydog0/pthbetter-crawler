@@ -6,20 +6,20 @@ import ConfigParser
 import json
 import argparse
 
-from whatapi import WhatAPI
+from redapi import WhatAPI
 
 
 def main():
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter, prog='whatbetter')
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter, prog='redbetter')
     parser.add_argument('-s', '--snatches', type=int, help='minimum amount of snatches required before transcoding',
                         default=5)
     parser.add_argument('-b', '--better', type=int, help='better transcode search type',
                         default=3)
     parser.add_argument('-c', '--count', type=int, help='backlog max size', default=5)
     parser.add_argument('--config', help='the location of the configuration file',
-                        default=os.path.expanduser('~/.whatbetter/config'))
+                        default=os.path.expanduser('~/.redbetter/config'))
     parser.add_argument('--cache', help='the location of the cache',
-                        default=os.path.expanduser('~/.whatbetter/cache-crawl'))
+                        default=os.path.expanduser('~/.redbetter/cache-crawl'))
 
     args = parser.parse_args()
 
@@ -28,12 +28,12 @@ def main():
         open(args.config)
         config.read(args.config)
     except:
-        print "please run whatbetter once"
+        print "please run redbetter once"
         sys.exit(2)
 
-    username = config.get('whatcd', 'username')
-    password = config.get('whatcd', 'password')
-    torrent_dir = os.path.expanduser(config.get('whatcd', 'torrent_dir'))
+    username = config.get('redacted', 'username')
+    password = config.get('redacted', 'password')
+    torrent_dir = os.path.expanduser(config.get('redacted', 'torrent_dir'))
 
     print 'Logging in to RED...'
     api = WhatAPI(username, password)

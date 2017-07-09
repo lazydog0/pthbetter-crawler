@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 '''
-Installer script for whatbetter.
+Installer script for redbetter.
 '''
 
 from setuptools import setup
@@ -16,19 +16,20 @@ else:
     raise RuntimeError("Unable to find version string in %s." % (VERSIONFILE,))
 
 setup(
-    name = "whatbetter",
-    description = "Automatically transcode and upload FLACs on What.CD.",
-    author = 'Zach Denton',
-    author_email = 'zacharydenton@gmail.com',
+    name = "redbetter",
+    description = "Automatically transcode and upload FLACs on Redacted.",
+    author = 'lazydog',
+    author_email = '',
     version = verstr,
-    url = 'http://github.com/zacharydenton/whatbetter',
+    url = 'http://github.com/lazydog0/redbetter-crawler',
     py_modules = [
         '_version',
         'tagging',
         'transcode',
+        'redapi',
         'whatapi'
     ],
-    scripts = ['whatbetter'],
+    scripts = ['redbetter'],
     install_requires = [
         'mutagen',
         'mechanize',
